@@ -1,7 +1,7 @@
 trigger: none
 
 schedules:
-- cron: "44 6 * * *"  # 4:00 UTC = 9:30 IST
+- cron: "0 4 * * *"  # 4:00 UTC = 9:30 IST
   displayName: Daily Start at 9:30 AM IST
   branches:
     include:
