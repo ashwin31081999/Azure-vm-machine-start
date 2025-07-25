@@ -1,7 +1,7 @@
 trigger: none
 
 schedules:
-- cron: "0 4 * * *"  # 4:00 UTC = 9:30 IST
+- cron: "0 6.37 * * *"  # 4:00 UTC = 9:30 IST
   displayName: Daily Start at 9:30 AM IST
   branches:
     include:
@@ -16,8 +16,8 @@ jobs:
   steps:
   - task: AzureCLI@2
     inputs:
-      azureSubscription: '<YOUR-AZURE-SERVICE-CONNECTION-NAME>'
+      azureSubscription: 'Azure subscription 1'
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        az vm start --resource-group myResourceGroup --name myWindowsVM
+        az vm start --resource-group MyLowCostVM_group --name MyLowCostVM
