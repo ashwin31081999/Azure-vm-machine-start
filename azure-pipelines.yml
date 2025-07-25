@@ -1,0 +1,23 @@
+trigger: none
+
+schedules:
+- cron: "0 4 * * *"  # 4:00 UTC = 9:30 IST
+  displayName: Daily Start at 9:30 AM IST
+  branches:
+    include:
+      - main
+  always: true
+
+jobs:
+- job: StartVM
+  displayName: "Start Windows VM"
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: '<YOUR-AZURE-SERVICE-CONNECTION-NAME>'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        az vm start --resource-group myResourceGroup --name myWindowsVM
