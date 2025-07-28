@@ -1,7 +1,7 @@
 trigger: none
 
 schedules:
-- cron: "27 5 * * *"  # 4:00 UTC = 9:30 IST
+- cron: "0 4 * * *"  # 4:00 UTC = 9:30 IST
   displayName: Daily Start at 9:30 AM IST
   branches:
     include:
@@ -9,7 +9,7 @@ schedules:
   always: true
 
 jobs:
-- job: StopVM
+- job: StartVM
   displayName: "Start Windows VM"
   pool:
     vmImage: 'ubuntu-latest'
@@ -20,4 +20,4 @@ jobs:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        az vm stop --resource-group MyLowCostVM_group --name MyLowCostVM
+        az vm start --resource-group MyLowCostVM_group --name MyLowCostVM
